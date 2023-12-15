@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+{% extends 'header.html' %}
+
+{% load static %}
+
+<html lang="en">
+
+    
+    {% block content %} 
+
+    <style>
+
+        form{
+            width: 38%;
+            margin: auto;
+            margin-bottom: 15px;
+            display: block;
+            height: 85vh;
+            padding-left: 40px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            width: 90%;
+        }
+
+        textarea {
+            margin-bottom: 5px;
+            width: 90%;
+        }
+
+
+        h3 {
+            text-align: center;
+            color: green;
+        }
+
+        .btn{
+            text-align: center;
+            margin: auto;
+        }
+
+
+    </style>
+
+        
+    <body>
+        
+        <!-- Page content-->
+      
+        <div class="container">
+
+            <h3>Edit Your Profile</h3>
+
+            <form method="post" enctype="multipart/form-data" action="{% url 'editpro' %}">
+                {% csrf_token %}
+                <label for="profileImage">Profile Image:</label>
+                <input type="file" name="postimage" id="profileImage">
+
+
+                <input type="text" name="displayname" id="displayname" placeholder="Display Name" value="{{ form_data.displayname }}">
+
+                
+                <input type="text" name="Fullname" id="fullName" placeholder="Full Name" value="{{ form_data.Fullname }}">
+
+                
+                <input type="text" name="Profession" id="profession" placeholder="Profession" value="{{ form_data.Profession }}">
+
+                
+                <textarea name="body" id="body" placeholder="About Me" rows="2">{{ form_data.body }}</textarea>
+
+                
+                <input type="text" name="Twitter" id="twitter" placeholder="Twitter Hanadle" value="{{ form_data.Twitter }}">
+
+                
+                <input type="text" name="Facebook" id="facebook" placeholder="Facebook Handle" value="{{ form_data.Facebook }}">
+
+                
+                <input type="text" name="Google +" id="googlePlus" placeholder="Google +" value="{{ form_data.Google_plus }}">
+
+                
+                <input type="text" name="Instagram" id="instagram" placeholder="Instagram Handle" value="{{ form_data.Instagram }}"><br>
+
+                <a href="{% url 'editpro' %}"><input type="submit" value="Save" class="btn btn-success">
+
+            </form>
+
+            </div>
+
+        </div>
+
+        
+
+        {% include "footer.html" %}
+
+    </body>
+
+    {% endblock content %}
+
+</html>

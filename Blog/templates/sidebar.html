@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+    <style>
+        .btn {
+            text-align: center;
+            margin: auto;
+            font-weight: 600;
+        }
+    </style>
+    
+
+    <body>
+
+        <!-- Page content-->
+        
+
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+
+                    <!-- Search widget-->
+                    <div class="card mb-4">
+                        <div class="card-header text-muted mt-3"></a> Search</div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                                <!-- <button class="btn btn-primary" id="button-search" type="button">
+                                    <a href="">Go!</a>
+                                </button> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categories widget-->
+                    <div class="card mb-4" style="font-weight: bolder;">
+                        <div class="card-header text-muted">Categories</div>
+                        <div class="card-body">
+                            <div class="row">
+
+                                {% for list in global_lista %}
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0 fst-italic" style="font-weight: bold;">
+                                        {% comment %} <li><a href="{% url 'category' slug=category_post.slug %}">{{ category_post.name }}>{{list.name}}</a></li> {% endcomment %}
+                                        {% comment %} <li><a href="{% url 'category' category_post.name %}">{{ list.name }}</a></li> {% endcomment %}
+                                        <li><a href="{% url 'category' list.slug %}">{{ list.name }}</a></li>
+                                        
+                                    </ul>
+                                    {% comment %} {% if request.user.is_staff %}
+                                        <a href="{% url 'catdeleta' list.pk %}"><input type="button" class="btn text-secondary btn-sm" value="Del"></a>
+                                        {% endif %} {% endcomment %}
+                                </div>
+                                {% endfor %}
+                                
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Side widget-->
+                    <div class="card mb-4">
+                        <div class="card-header text-muted">Side Widget</div>
+                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                    </div>
+
+                </div>
+
+        
+
+        
+    </body>
+</html>
